@@ -19,10 +19,19 @@ describe("Edit Todo item", () => {
     cy.get('.todo-list').children("li").eq(0).as("todoItem");
     cy.get('@todoItem').find('label').dblclick()
     cy.get('@todoItem').find('.edit').dblclick().clear().type("Task 9");
-    cy.get('h1').trigger('click');
+    cy.get('h1').click();
 
     cy.get('@todoItem').should("contain", "Task 9").should("be.visible");
     cy.contains(".todo-count", "1 item left").should("be.visible");
   });
+
+  it("should remove Todo item when leaving input empty while editing item", () => {
+    cy.get('.todo-list').children("li").eq(0).as("todoItem");
+    cy.get('@todoItem').find('label').dblclick()
+    cy.get('@todoItem').find('.edit').dblclick().clear().type("{Enter}");
+
+    cy.get('.todo-list li').should('not.exist');
+  });
+
 
 });

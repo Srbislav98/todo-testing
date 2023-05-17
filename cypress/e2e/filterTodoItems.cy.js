@@ -12,6 +12,7 @@ describe("Filter Todo items", () => {
   it("should filter active Todo items", () => {
     cy.contains('Active').click();
 
+    cy.contains('Active').should('have.class', 'selected');
     cy.get('.todo-list').children("li").should('have.length', 1);
     cy.get('.todo-list').children("li").eq(0).as("firstTODO");
     cy.get('@firstTODO').should('contain',"Task 1");
@@ -20,6 +21,7 @@ describe("Filter Todo items", () => {
   it("should filter completed Todo items", () => {
     cy.contains('Completed').click();
 
+    cy.contains('Completed').should('have.class', 'selected');
     cy.get('.todo-list').children("li").should('have.length', 1);
     cy.get('.todo-list').children("li").eq(0).as("firstTODO");
     cy.get('@firstTODO').should('contain',"Task 2");
