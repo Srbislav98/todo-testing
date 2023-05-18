@@ -1,5 +1,5 @@
 # todo-testing
-[Test case spreadsheet - Test scenarios for TodoMVC.pdf](https://github.com/Srbislav98/todo-testing/files/11505624/Test.case.spreadsheet.-.Test.scenarios.for.TodoMVC.pdf)
+[Test case spreadsheet - Test scenarios for TodoMVC.pdf](https://github.com/Srbislav98/todo-testing/files/11505624/Test.case.spreadsheet.-.Test.scenarios.for.TodoMVC.pdf)<br>
 Open a command-line interface (CLI) and navigate to the root directory of Cypress project.<br>
 Ensure that you have Node.js installed on your machine. You can check if it's installed by running the following command:<br>
 ```
