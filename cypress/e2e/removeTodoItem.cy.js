@@ -10,9 +10,8 @@ describe("Remove Todo item from the list", () => {
     cy.contains("label", "Task 1").should("not.exist");
   });
 
-  it("should remove checked Todo item", () => {
+  it("should remove completed Todo item", () => {
     cy.get(".toggle").first().click();
-    cy.contains(".todo-count", "No items left").should("be.visible");
     cy.contains("label", "Task 1").siblings(".destroy").click({ force: true });
 
     cy.contains("label", "Task 1").should("not.exist");

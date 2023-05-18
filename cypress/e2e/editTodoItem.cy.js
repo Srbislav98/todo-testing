@@ -4,11 +4,10 @@ describe("Edit Todo item", () => {
     cy.visit("https://todomvc-app-for-testing.surge.sh/");
 
     cy.get(".new-todo").type("Task 1{Enter}");
-
+    cy.get('.todo-list').children("li").eq(0).as("todoItem");
   });
   it("should rename Todo item and confirm it by clicking enter", () => {
-    cy.get('.todo-list').children("li").eq(0).as("todoItem");
-    cy.get('@todoItem').find('label').dblclick()
+    cy.get('@todoItem').find('label').dblclick();
     cy.get('@todoItem').find('.edit').dblclick().clear().type("Task 9{Enter}");
 
     cy.get('@todoItem').should("contain", "Task 9").should("be.visible");
@@ -16,9 +15,8 @@ describe("Edit Todo item", () => {
   });
 
   it("should rename Todo item and confirm it by clicking outside input element", () => {
-    cy.get('.todo-list').children("li").eq(0).as("todoItem");
-    cy.get('@todoItem').find('label').dblclick()
-    cy.get('@todoItem').find('.edit').dblclick().clear().type("Task 9");
+    cy.get('@todoItem').find('label').dblclick();
+    cy.get('@todoItem').find('.edit').clear().type("Task 9");
     cy.get('h1').click();
 
     cy.get('@todoItem').should("contain", "Task 9").should("be.visible");
@@ -26,9 +24,8 @@ describe("Edit Todo item", () => {
   });
 
   it("should remove Todo item when leaving input empty while editing item", () => {
-    cy.get('.todo-list').children("li").eq(0).as("todoItem");
-    cy.get('@todoItem').find('label').dblclick()
-    cy.get('@todoItem').find('.edit').dblclick().clear().type("{Enter}");
+    cy.get('@todoItem').find('label').dblclick();
+    cy.get('@todoItem').find('.edit').clear().type("{Enter}");
 
     cy.get('.todo-list li').should('not.exist');
   });
